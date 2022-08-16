@@ -22,44 +22,10 @@ class Program
     {
         
         Console.OutputEncoding = Encoding.UTF8;
-        /*Console.Title = "Yo";
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine(" \u2580 ");
-        Console.ResetColor();*/
-
-        /*Console.WriteLine("Enter the Height: ");
-        int Height = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("Enter the Width: ");
-        int Width = Convert.ToInt32(Console.ReadLine());
-
-        Grid grid = new Grid(Width, Height);
-        grid.CreateRows();
-
-        foreach(Row row in grid.Rows)
-        {
-            foreach(Cell cell in row.Cells)
-            {
-                Console.Write(cell.CellBody);
-            }
-            Console.WriteLine();
-        }
-
-        int runs = 0;
+ 
+        int maxGens = 500;
         Simulation sim = new Simulation();
-*/
-        int maxGens = 4;
-        int runs = 0;
-        GridFactory gridFactory = new GridFactory();
-        Grid grid = gridFactory.Generate(10, 10);
-
-        Simulation simulation = new Simulation();
-
-        while (runs++ < maxGens)
-        {
-            simulation.StartSimulation(grid);
-            System.Threading.Thread.Sleep(1000);
-        }
+        sim.StartSimulation(maxGens);
 
 
         Console.ReadKey();

@@ -6,61 +6,61 @@ using System.Threading.Tasks;
 
 class Simulation
 {
-    public void StartSimulation(Grid grid)
+    public void StartSimulation(int MaxGenerations)
     {
-        DrawSimulation(grid);
-        NextGeneration(grid);
-    }
+        GridFactory gridFactory = new GridFactory();
+        Grid FirstGenGrid = gridFactory.Generate(20, 20);
 
-    private void NextGeneration(Grid grid)
-    {
-        foreach (Row row in grid.Rows)
+        FirstGeneration FirstGen = new FirstGeneration();
+        FirstGenGrid = FirstGen.Generation(FirstGenGrid);
+
+/*        foreach(Row row in FirstGenGrid.Rows)
         {
-            foreach (Cell cell in row.Cells)
+            foreach(Cell cell in row.Cells)
             {
-                NeighborFactory factory = new NeighborFactory();
-                factory.GenerateNeighbors(cell, grid);
-                int aliveNeighbors = AliveNeighbors(cell);
-
-                if (cell._IsAlive)
-                {
-                    if(aliveNeighbors < 2)
-                    {
-                        cell._IsAlive = false;
-                    }
-
-                    if(aliveNeighbors > 3)
-                    {
-                        cell._IsAlive = false;
-                    }
-                }
-                else
-                {
-                    if(aliveNeighbors == 3)
-                    {
-                        cell._IsAlive = true;
-                    }
-                }
-
+                cell._IsAlive = false;
             }
         }
-    }
 
-    private int AliveNeighbors(Cell cell)
-    {
-        int AliveNeighbors = 0;
-        foreach(Cell neighbor in cell._Neighbors)
+        FirstGenGrid.Rows[1].Cells[1]._IsAlive = true;
+        FirstGenGrid.Rows[1].Cells[2]._IsAlive = true;
+        FirstGenGrid.Rows[2].Cells[1]._IsAlive = true;
+        FirstGenGrid.Rows[2].Cells[2]._IsAlive = true;
+
+        FirstGenGrid.Rows[3].Cells[3]._IsAlive = true;
+        FirstGenGrid.Rows[3].Cells[4]._IsAlive = true;
+        FirstGenGrid.Rows[4].Cells[3]._IsAlive = true;
+        FirstGenGrid.Rows[4].Cells[4]._IsAlive = true;*/
+
+        DrawSimulation(FirstGenGrid, 0);
+
+        NextGeneration NextGen = new NextGeneration();
+        Grid NextGenGrid = NextGen.Generation(FirstGenGrid);
+
+        NeighborFactory n = new NeighborFactory();
+        int count = 0;
+        while(count++ < MaxGenerations)
         {
-            if (neighbor._IsAlive)
+
+            foreach (Row row in NextGenGrid.Rows)
             {
-                AliveNeighbors++;
+                foreach (Cell cell in row.Cells)
+                {
+                    n.GenerateNeighbors(cell, NextGenGrid);
+                }
             }
+
+            DrawSimulation(NextGenGrid, count);
+            NextGenGrid = NextGen.Generation(NextGenGrid);
+            
         }
-        return AliveNeighbors;
+
     }
 
-    private void DrawSimulation(Grid grid)
+
+    private void DrawSimulation(Grid grid, int iterationNum)
     {
+        Console.WriteLine(iterationNum);
         string Life = "";
         foreach(Row row in grid.Rows)
         {
@@ -68,19 +68,22 @@ class Simulation
             {
                 if (cell._IsAlive)
                 {
-                    Life += " \u2580 ";
+                    Life += "\u25A0 ";
                 }
                 else
                 {
-                    Life += "   ";
+                    Life += "  ";
                 }
             }
             Life += "\n";
         }
-        Console.WriteLine();
-        Console.WriteLine("-----------------------------------------");
-        Console.WriteLine();
-/*        Console.SetCursorPosition(0, Console.WindowTop);
-*/        Console.Write(Life.TrimEnd('\n'));
+        /*        Console.WriteLine();
+                Console.WriteLine("-----------------------------------------");
+                Console.WriteLine();*/
+
+        Console.SetCursorPosition(0, Console.WindowTop);
+        System.Threading.Thread.Sleep(100);
+
+        Console.Write(Life.TrimEnd('\n'));
     }
 }
