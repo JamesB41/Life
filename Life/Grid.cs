@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-class Grid
+public class Grid
 {
     public List<Row> Rows = new List<Row>();
     public int Height;

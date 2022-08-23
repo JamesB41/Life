@@ -14,5 +14,11 @@ class BottomRightNeighbor : INeighborCreator
             Cell cell = row.Cells[CurrentCell._WidthIndex + 1];
             CurrentCell._Neighbors.Add(cell);
         }
+        if(CurrentCell._WidthIndex == CurrentGrid.Width - 1 && CurrentCell._HeightIndex == CurrentGrid.Height - 1)
+        {
+            Row row = CurrentGrid.Rows[0];
+            Cell cell = row.Cells[0];
+            CurrentCell._Neighbors.Add(cell);
+        }
     }
 }

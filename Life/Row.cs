@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Row
+public class Row
 {
     public List<Cell> Cells = new List<Cell>();
     

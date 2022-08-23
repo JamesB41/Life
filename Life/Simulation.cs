@@ -14,23 +14,20 @@ class Simulation
         FirstGeneration FirstGen = new FirstGeneration();
         FirstGenGrid = FirstGen.Generation(FirstGenGrid);
 
-/*        foreach(Row row in FirstGenGrid.Rows)
+        foreach (Row row in FirstGenGrid.Rows)
         {
-            foreach(Cell cell in row.Cells)
+            foreach (Cell cell in row.Cells)
             {
                 cell._IsAlive = false;
             }
         }
 
-        FirstGenGrid.Rows[1].Cells[1]._IsAlive = true;
-        FirstGenGrid.Rows[1].Cells[2]._IsAlive = true;
+        FirstGenGrid.Rows[1].Cells[3]._IsAlive = true;
         FirstGenGrid.Rows[2].Cells[1]._IsAlive = true;
-        FirstGenGrid.Rows[2].Cells[2]._IsAlive = true;
-
+        FirstGenGrid.Rows[2].Cells[3]._IsAlive = true;
+        FirstGenGrid.Rows[3].Cells[2]._IsAlive = true;
         FirstGenGrid.Rows[3].Cells[3]._IsAlive = true;
-        FirstGenGrid.Rows[3].Cells[4]._IsAlive = true;
-        FirstGenGrid.Rows[4].Cells[3]._IsAlive = true;
-        FirstGenGrid.Rows[4].Cells[4]._IsAlive = true;*/
+
 
         DrawSimulation(FirstGenGrid, 0);
 

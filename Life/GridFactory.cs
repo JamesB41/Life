@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-class GridFactory
+public class GridFactory
 {
     public Grid Generate(int Width, int Height)
     {
