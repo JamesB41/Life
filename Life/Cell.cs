@@ -7,16 +7,8 @@ using System.Threading.Tasks;
 
 public class Cell
 {
-    public bool _IsAlive { get; set; }
-    public int _WidthIndex { get; set; }
-    public int _HeightIndex { get; set; }
-    public List<Cell> _Neighbors = new List<Cell> ();
-
-
-    public Cell(bool IsAlive, int WidthIndex, int HeightIndex)
-    {
-        _IsAlive = IsAlive;
-        _WidthIndex = WidthIndex;
-        _HeightIndex = HeightIndex;
-    }
+    public bool IsAlive { get; set; }
+    public int WidthIndex { get; set; }
+    public int HeightIndex { get; set; }
+    public Grid grid { get; set; }
 }

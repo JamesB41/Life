@@ -29,5 +29,10 @@ namespace LifeTests
             }
         }
 
+        [TestMethod]
+        public void TestStateProducesExpectedOutput()
+        {
+            
+        }
     }
 }
