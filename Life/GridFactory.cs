@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 public class GridFactory
 {
-    public Grid Generate(int Width, int Height)
+    public Grid Generate(int Height, int Width)
     {
         Random RandNum = new Random();
-        Grid grid = new Grid(Width, Height);
+        Grid grid = new Grid(Height, Width);
 
         for (int i = 0; i < Height; i++)
         {

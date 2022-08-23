@@ -9,7 +9,7 @@ class Simulation
     public void StartSimulation(int MaxGenerations)
     {
         GridFactory gridFactory = new GridFactory();
-        Grid FirstGenGrid = gridFactory.Generate(20, 20);
+        Grid FirstGenGrid = gridFactory.Generate(10, 20);
 
         FirstGeneration FirstGen = new FirstGeneration();
         FirstGenGrid = FirstGen.Generation(FirstGenGrid);
