@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Life.Patterns
 {
-    internal class Pattern
+    public class Pattern
     {
         public int width { get; set; }
         public int height { get; set; }
 
-        public List<Tuple<int, int>> pattern { get; set; }
+        public List<Tuple<int, int>>? pattern { get; set; }
     }
 }

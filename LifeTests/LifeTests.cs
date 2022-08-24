@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
+using Life.Patterns;
 
 namespace LifeTests
 {
@@ -10,29 +12,27 @@ namespace LifeTests
     public class LifeTests
     {
         [TestMethod]
-        public void TestCellNeighbors()
+        public void TestBlinker()
         {
-/*            GridFactory gridFactory = new GridFactory();
-            Grid FirstGenGrid = gridFactory.Generate(20, 20);
+            Console.WriteLine("SAD");
+            Pattern p = new Blinker();
 
-            FirstGeneration FirstGen = new FirstGeneration();
-            FirstGenGrid = FirstGen.Generation(FirstGenGrid);
+            Grid grid = new(30, 30);
 
-            int expectedHeight = 19;
-            int expectedWidth = 19;
+            int pattern_left = 5;
+            int pattern_top = 5;
 
-            List<Cell> CellList = FirstGenGrid.Rows[0].Cells[0]._Neighbors;
-            foreach (Cell cell in CellList)
+            foreach (var position in p.pattern)
             {
-                if(expectedHeight == cell._HeightIndex && expectedHeight == cell._WidthIndex)
-                    Assert.AreEqual(expectedHeight, cell._HeightIndex);
-            }*/
-        }
+                grid.Rows[pattern_top + position.Item1].Cells[pattern_left + position.Item2].IsAlive = true;
+            }
 
-        [TestMethod]
-        public void TestStateProducesExpectedOutput()
-        {
-            
+            // Just iterate once to make sure it rotates
+            grid.Iterate();
+
+            Assert.IsTrue(grid.Rows[pattern_top - 1].Cells[pattern_left + 1].IsAlive);
+            Assert.IsTrue(grid.Rows[pattern_top].Cells[pattern_left + 1].IsAlive);
+            Assert.IsTrue(grid.Rows[pattern_top + 1].Cells[pattern_left + 1].IsAlive);
         }
     }
 }

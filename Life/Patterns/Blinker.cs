@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Life.Patterns
 {
-    internal class Blinker : Pattern
+    public class Blinker : Pattern
     {
         public Blinker()
         {

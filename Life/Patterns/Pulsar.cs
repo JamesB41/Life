@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Life.Patterns
 {
-    internal class Pulsar : Pattern
+    public class Pulsar : Pattern
     {
         public Pulsar()
         {

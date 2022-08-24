@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Life.Patterns
 {
-    internal class Glider : Pattern
+    public class Glider : Pattern
     {
         public Glider()
         {
