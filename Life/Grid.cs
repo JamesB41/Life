@@ -35,15 +35,13 @@ public class Grid
                 if (currentCell.IsAlive && aliveNeighbors < 2)
                 {
                     currentCell.IsAliveNextRound = false;
-                }
-                else if (currentCell.IsAlive && aliveNeighbors > 3)
+                } else if (currentCell.IsAlive && aliveNeighbors > 3)
                 {
                     currentCell.IsAliveNextRound = false;
                 } else if (currentCell.IsAlive && aliveNeighbors >= 2 && aliveNeighbors <= 3)
                 {
                     currentCell.IsAliveNextRound = true;
-                }
-                else if (currentCell.IsAlive == false && aliveNeighbors == 3)
+                } else if (currentCell.IsAlive == false && aliveNeighbors == 3)
                 {
                     currentCell.IsAliveNextRound = true;
                 }
