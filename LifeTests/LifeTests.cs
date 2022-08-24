@@ -14,7 +14,6 @@ namespace LifeTests
         [TestMethod]
         public void TestBlinker()
         {
-            Console.WriteLine("SAD");
             Pattern p = new Blinker();
 
             Grid grid = new(30, 30);
