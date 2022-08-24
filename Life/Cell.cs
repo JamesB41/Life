@@ -8,7 +8,13 @@ using System.Threading.Tasks;
 public class Cell
 {
     public bool IsAlive { get; set; }
+    public bool IsAliveNextRound { get; set; }
     public int WidthIndex { get; set; }
     public int HeightIndex { get; set; }
-    public Grid grid { get; set; }
+    public Row Row { get; set; }
+
+    public Cell(Row row)
+    {
+        this.Row = row;
+    }
 }

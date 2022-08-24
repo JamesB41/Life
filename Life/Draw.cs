@@ -14,7 +14,7 @@ class Draw
         {
             foreach (Cell cell in row.Cells)
             {
-                if (cell._IsAlive)
+                if (cell.IsAlive)
                 {
                     Life += " \u2580 ";
                 }

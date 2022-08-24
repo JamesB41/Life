@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Life.Patterns;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,80 +7,41 @@ using System.Threading.Tasks;
 
 class Simulation
 {
-    public void StartSimulation(int MaxGenerations)
+    public static void StartSimulation()
     {
-        GridFactory gridFactory = new GridFactory();
-        Grid FirstGenGrid = gridFactory.Generate(10, 20);
+        Pattern p = new Pulsar();
 
-        FirstGeneration FirstGen = new FirstGeneration();
-        FirstGenGrid = FirstGen.Generation(FirstGenGrid);
+        Grid grid = new(30, 30);
 
-        foreach (Row row in FirstGenGrid.Rows)
+        int pattern_left = 5;
+        int pattern_top = 5;
+
+        foreach (var position in p.pattern)
         {
-            foreach (Cell cell in row.Cells)
-            {
-                cell._IsAlive = false;
-            }
+            grid.Rows[pattern_top + position.Item1].Cells[pattern_left + position.Item2].IsAlive = true;
         }
 
-        FirstGenGrid.Rows[1].Cells[3]._IsAlive = true;
-        FirstGenGrid.Rows[2].Cells[1]._IsAlive = true;
-        FirstGenGrid.Rows[2].Cells[3]._IsAlive = true;
-        FirstGenGrid.Rows[3].Cells[2]._IsAlive = true;
-        FirstGenGrid.Rows[3].Cells[3]._IsAlive = true;
-
-
-        DrawSimulation(FirstGenGrid, 0);
-
-        NextGeneration NextGen = new NextGeneration();
-        Grid NextGenGrid = NextGen.Generation(FirstGenGrid);
-
-        NeighborFactory n = new NeighborFactory();
-        int count = 0;
-        while(count++ < MaxGenerations)
+        while(true)
         {
-
-            foreach (Row row in NextGenGrid.Rows)
-            {
-                foreach (Cell cell in row.Cells)
-                {
-                    n.GenerateNeighbors(cell, NextGenGrid);
-                }
-            }
-
-            DrawSimulation(NextGenGrid, count);
-            NextGenGrid = NextGen.Generation(NextGenGrid);
-            
+            Simulation.DrawSimulation(grid);
+            grid.Iterate();
         }
-
     }
 
-
-    private void DrawSimulation(Grid grid, int iterationNum)
+    private static void DrawSimulation(Grid grid)
     {
-        Console.WriteLine(iterationNum);
         string Life = "";
         foreach(Row row in grid.Rows)
         {
             foreach(Cell cell in row.Cells)
             {
-                if (cell._IsAlive)
-                {
-                    Life += "\u25A0 ";
-                }
-                else
-                {
-                    Life += "  ";
-                }
+                Life += cell.IsAlive ? "\u25A0 " : "  ";
             }
             Life += "\n";
         }
-        /*        Console.WriteLine();
-                Console.WriteLine("-----------------------------------------");
-                Console.WriteLine();*/
 
         Console.SetCursorPosition(0, Console.WindowTop);
-        System.Threading.Thread.Sleep(100);
+        System.Threading.Thread.Sleep(750);
 
         Console.Write(Life.TrimEnd('\n'));
     }
