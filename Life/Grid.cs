@@ -15,7 +15,7 @@ public class Grid
     {
         for (int i = 0; i < height; i++)
         {
-            this.Rows.Add(new Row(width, this, i));
+            this.Rows.Add(new Row(width));
         }
     }
 
