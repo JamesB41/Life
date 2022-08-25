@@ -26,7 +26,7 @@ namespace LifeTests
             Assert.IsTrue(grid.Rows[pattern_top - 1].Cells[pattern_left + 1].IsAlive);
             Assert.IsTrue(grid.Rows[pattern_top].Cells[pattern_left + 1].IsAlive);
             Assert.IsTrue(grid.Rows[pattern_top + 1].Cells[pattern_left + 1].IsAlive);
-            
+
             // Should be back to starting state after this
             grid.Iterate();
 

@@ -12,9 +12,10 @@
 
     public void Iterate()
     {
-        for (int row = 0; row < this.Rows.Count; row++) 
+        for (int row = 0; row < this.Rows.Count; row++)
         {
-            for (int col = 0; col < this.Rows[row].Cells.Count; col++) {
+            for (int col = 0; col < this.Rows[row].Cells.Count; col++)
+            {
                 int aliveNeighbors = GetAliveNeighborCount(row, col);
 
                 Cell currentCell = this.Rows[row].Cells[col];
@@ -26,13 +27,16 @@
                 if (currentCell.IsAlive && aliveNeighbors < 2)
                 {
                     currentCell.IsAliveNextRound = false;
-                } else if (currentCell.IsAlive && aliveNeighbors > 3)
+                }
+                else if (currentCell.IsAlive && aliveNeighbors > 3)
                 {
                     currentCell.IsAliveNextRound = false;
-                } else if (currentCell.IsAlive && aliveNeighbors >= 2 && aliveNeighbors <= 3)
+                }
+                else if (currentCell.IsAlive && aliveNeighbors >= 2 && aliveNeighbors <= 3)
                 {
                     currentCell.IsAliveNextRound = true;
-                } else if (currentCell.IsAlive == false && aliveNeighbors == 3)
+                }
+                else if (currentCell.IsAlive == false && aliveNeighbors == 3)
                 {
                     currentCell.IsAliveNextRound = true;
                 }
@@ -40,9 +44,9 @@
         }
 
         // We've determined the next round state of each cell, now apply it.
-        foreach(Row r in this.Rows)
+        foreach (Row r in this.Rows)
         {
-            foreach(Cell cell in r.Cells)
+            foreach (Cell cell in r.Cells)
             {
                 cell.IsAlive = cell.IsAliveNextRound;
                 cell.IsAliveNextRound = false;

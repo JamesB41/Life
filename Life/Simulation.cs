@@ -10,7 +10,7 @@ class Simulation
         AddPatternToGrid(new Pulsar(), ref grid, 5, 25);
         AddPatternToGrid(new Pulsar(), ref grid, 25, 25);
 
-        while(true)
+        while (true)
         {
             Simulation.DrawSimulation(grid);
             grid.Iterate();
@@ -31,9 +31,9 @@ class Simulation
     private static void DrawSimulation(Grid grid)
     {
         string Life = "";
-        foreach(Row row in grid.Rows)
+        foreach (Row row in grid.Rows)
         {
-            foreach(Cell cell in row.Cells)
+            foreach (Cell cell in row.Cells)
             {
                 Life += cell.IsAlive ? "\u25A0 " : "  ";
             }
