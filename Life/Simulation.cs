@@ -9,22 +9,27 @@ class Simulation
 {
     public static void StartSimulation()
     {
-        Pattern p = new Pulsar();
-
-        Grid grid = new(30, 30);
-
-        int pattern_left = 5;
-        int pattern_top = 5;
-
-        foreach (var position in p.pattern)
-        {
-            grid.Rows[pattern_top + position.Item1].Cells[pattern_left + position.Item2].IsAlive = true;
-        }
+        Grid grid = new(50, 50);
+        AddPatternToGrid(new Pulsar(), ref grid, 5, 5);
+        AddPatternToGrid(new Pulsar(), ref grid, 25, 5);
+        AddPatternToGrid(new Pulsar(), ref grid, 5, 25);
+        AddPatternToGrid(new Pulsar(), ref grid, 25, 25);
 
         while(true)
         {
             Simulation.DrawSimulation(grid);
             grid.Iterate();
+        }
+    }
+
+    public static void AddPatternToGrid(Pattern p, ref Grid g, int x_pos, int y_pos)
+    {
+        int pattern_left = x_pos;
+        int pattern_top = y_pos;
+
+        foreach (var position in p.getPattern())
+        {
+            g.Rows[pattern_top + position.Item1].Cells[pattern_left + position.Item2].IsAlive = true;
         }
     }
 
@@ -41,7 +46,7 @@ class Simulation
         }
 
         Console.SetCursorPosition(0, Console.WindowTop);
-        System.Threading.Thread.Sleep(750);
+        System.Threading.Thread.Sleep(250);
 
         Console.Write(Life.TrimEnd('\n'));
     }

@@ -10,15 +10,7 @@ namespace Life.Patterns
     {
         public Blinker()
         {
-            this.width = 3;
-            this.height = 1;
-
-            var pattern = new List<Tuple<int, int>>();
-            pattern.Add(new Tuple<int, int>(0, 0));
-            pattern.Add(new Tuple<int, int>(0, 1));
-            pattern.Add(new Tuple<int, int>(0, 2));
-
-            this.pattern = pattern;
+            this.TextShape = "###";
         }
     }
 }

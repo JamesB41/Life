@@ -71,10 +71,8 @@ public class Grid
     private int GetAliveNeighborCount(int row, int col)
     {
         int aliveNeighbors = 0;
-        int gridWidth = this.Rows[0].Cells.Count;
-        int gridHeight = this.Rows.Count;
-
-        List<Tuple<int, int>> neighbors = new();
+        int gridWidth = getHeight();
+        int gridHeight = getWidth();
 
         // Above
         aliveNeighbors += this.Rows[(row - 1 >= 0) ? row - 1 : gridHeight - 1].Cells[(col - 1 >= 0) ? col - 1 : gridWidth - 1].IsAlive ? 1 : 0;

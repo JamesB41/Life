@@ -21,7 +21,7 @@ namespace LifeTests
             int pattern_left = 5;
             int pattern_top = 5;
 
-            foreach (var position in p.pattern)
+            foreach (var position in p.getPattern())
             {
                 grid.Rows[pattern_top + position.Item1].Cells[pattern_left + position.Item2].IsAlive = true;
             }
